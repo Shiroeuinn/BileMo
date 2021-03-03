@@ -8,14 +8,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource(
- *     attributes={"security"="is_granted('ROLE_OAUTH2_USERS')"},
+ *     attributes={
+ *         "security"="is_granted('ROLE_USER')",
+ *         "order"={"id":"DESC"}
+ *     },
+ *     paginationItemsPerPage=5,
  *     collectionOperations={
  *         "get",
- *         "post"={"security"="is_granted('ROLE_OAUTH2_BILEMOMASTER')"}
+ *         "post"={"security"="is_granted('ROLE_BILEMO')"}
  *     },
  *     itemOperations={
  *         "get",
- *         "put"={"security"="is_granted('ROLE_OAUTH_BILEMOMASTER')"},
+ *         "put"={
+ *              "security"="is_granted('ROLE_BILEMO')",
+ *          },
  *     }
  * )
  * @ORM\Entity(repositoryClass=SmartphoneRepository::class)

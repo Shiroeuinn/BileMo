@@ -19,32 +19,12 @@ class SmartphoneRepository extends ServiceEntityRepository
         parent::__construct($registry, Smartphone::class);
     }
 
-    // /**
-    //  * @return Smartphone[] Returns an array of Smartphone objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findSmartphoneById(int $id)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getOneOrNullResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Smartphone
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

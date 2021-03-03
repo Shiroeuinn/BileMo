@@ -2,12 +2,28 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *     "order"={"id":"DESC"}
+ *     },
+ *     paginationItemsPerPage=5,
+ *     collectionOperations={
+ *         "get",
+ *         "post"={"security"="is_granted('ROLE_USER')"}
+ *     },
+ *     itemOperations={
+ *         "get",
+ *         "put"={"security"="is_granted('ROLE_USER')"},
+ *     }
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"client": "exact"})
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User

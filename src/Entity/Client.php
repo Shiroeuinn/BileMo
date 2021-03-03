@@ -24,12 +24,17 @@ class Client
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $username;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="client", orphanRemoval=true)
      */
     private $users;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
 
     public function __construct()
     {
@@ -43,12 +48,12 @@ class Client
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
     public function setName(string $name): self
     {
-        $this->name = $name;
+        $this->username = $name;
 
         return $this;
     }
@@ -79,6 +84,18 @@ class Client
                 $user->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }

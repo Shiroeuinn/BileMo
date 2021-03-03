@@ -1087,122 +1087,304 @@
     <table id="345" parent="6" name="doctrine_migration_versions">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="346" parent="6" name="smartphone">
+    <table id="346" parent="6" name="oauth2_access_token">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <table id="347" parent="6" name="user">
+    <table id="347" parent="6" name="oauth2_authorization_code">
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="348" parent="344" name="id">
+    <table id="348" parent="6" name="oauth2_client">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="349" parent="6" name="oauth2_refresh_token">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="350" parent="6" name="smartphone">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <table id="351" parent="6" name="user">
+      <Collation>utf8mb4_unicode_ci</Collation>
+    </table>
+    <column id="352" parent="344" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="349" parent="344" name="name">
+    <column id="353" parent="344" name="username">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="350" parent="344" name="PRIMARY">
+    <column id="354" parent="344" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="355" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="351" parent="345" name="version">
+    <column id="356" parent="345" name="version">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="352" parent="345" name="executed_at">
+    <column id="357" parent="345" name="executed_at">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="353" parent="345" name="execution_time">
+    <column id="358" parent="345" name="execution_time">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="354" parent="345" name="PRIMARY">
+    <key id="359" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="355" parent="346" name="id">
+    <column id="360" parent="346" name="identifier">
+      <Position>1</Position>
+      <DataType>char(80)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="361" parent="346" name="client">
+      <Position>2</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="362" parent="346" name="expiry">
+      <Position>3</Position>
+      <Comment>(DC2Type:datetime_immutable)</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="363" parent="346" name="user_identifier">
+      <Position>4</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <column id="364" parent="346" name="scopes">
+      <Position>5</Position>
+      <Comment>(DC2Type:oauth2_scope)</Comment>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="365" parent="346" name="revoked">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="366" parent="346" name="IDX_454D9673C7440455">
+      <ColNames>client</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="367" parent="346" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>identifier</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="368" parent="346" name="FK_454D9673C7440455">
+      <ColNames>client</ColNames>
+      <RefTableName>oauth2_client</RefTableName>
+      <RefColNames>identifier</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="369" parent="347" name="identifier">
+      <Position>1</Position>
+      <DataType>char(80)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="370" parent="347" name="client">
+      <Position>2</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="371" parent="347" name="expiry">
+      <Position>3</Position>
+      <Comment>(DC2Type:datetime_immutable)</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="372" parent="347" name="user_identifier">
+      <Position>4</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <column id="373" parent="347" name="scopes">
+      <Position>5</Position>
+      <Comment>(DC2Type:oauth2_scope)</Comment>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="374" parent="347" name="revoked">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="375" parent="347" name="IDX_509FEF5FC7440455">
+      <ColNames>client</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="376" parent="347" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>identifier</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="377" parent="347" name="FK_509FEF5FC7440455">
+      <ColNames>client</ColNames>
+      <RefTableName>oauth2_client</RefTableName>
+      <RefColNames>identifier</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="378" parent="348" name="identifier">
+      <Position>1</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="379" parent="348" name="secret">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+    </column>
+    <column id="380" parent="348" name="redirect_uris">
+      <Position>3</Position>
+      <Comment>(DC2Type:oauth2_redirect_uri)</Comment>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="381" parent="348" name="grants">
+      <Position>4</Position>
+      <Comment>(DC2Type:oauth2_grant)</Comment>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="382" parent="348" name="scopes">
+      <Position>5</Position>
+      <Comment>(DC2Type:oauth2_scope)</Comment>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="383" parent="348" name="active">
+      <Position>6</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="384" parent="348" name="allow_plain_text_pkce">
+      <Position>7</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <key id="385" parent="348" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>identifier</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="386" parent="349" name="identifier">
+      <Position>1</Position>
+      <DataType>char(80)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="387" parent="349" name="access_token">
+      <Position>2</Position>
+      <DataType>char(80)|0s</DataType>
+    </column>
+    <column id="388" parent="349" name="expiry">
+      <Position>3</Position>
+      <Comment>(DC2Type:datetime_immutable)</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="389" parent="349" name="revoked">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="390" parent="349" name="IDX_4DD90732B6A2DD68">
+      <ColNames>access_token</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="391" parent="349" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>identifier</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="392" parent="349" name="FK_4DD90732B6A2DD68">
+      <ColNames>access_token</ColNames>
+      <RefTableName>oauth2_access_token</RefTableName>
+      <RefColNames>identifier</RefColNames>
+      <OnDelete>set-null</OnDelete>
+    </foreign-key>
+    <column id="393" parent="350" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="356" parent="346" name="name">
+    <column id="394" parent="350" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="357" parent="346" name="description">
+    <column id="395" parent="350" name="description">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
     </column>
-    <column id="358" parent="346" name="camera">
+    <column id="396" parent="350" name="camera">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="359" parent="346" name="screen">
+    <column id="397" parent="350" name="screen">
       <Position>5</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="360" parent="346" name="memory">
+    <column id="398" parent="350" name="memory">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="346" name="slug">
+    <column id="399" parent="350" name="slug">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="362" parent="346" name="PRIMARY">
+    <key id="400" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="363" parent="347" name="id">
+    <column id="401" parent="351" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="364" parent="347" name="login">
+    <column id="402" parent="351" name="login">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="365" parent="347" name="password">
+    <column id="403" parent="351" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="366" parent="347" name="created_at">
+    <column id="404" parent="351" name="created_at">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="367" parent="347" name="client_id">
+    <column id="405" parent="351" name="client_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="368" parent="347" name="IDX_8D93D64919EB6921">
+    <index id="406" parent="351" name="IDX_8D93D64919EB6921">
       <ColNames>client_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="369" parent="347" name="PRIMARY">
+    <key id="407" parent="351" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="370" parent="347" name="FK_8D93D64919EB6921">
+    <foreign-key id="408" parent="351" name="FK_8D93D64919EB6921">
       <ColNames>client_id</ColNames>
       <RefTableName>client</RefTableName>
       <RefColNames>id</RefColNames>
