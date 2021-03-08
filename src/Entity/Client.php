@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
 class Client implements UserInterface

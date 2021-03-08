@@ -22,6 +22,12 @@ use Doctrine\ORM\Mapping as ORM;
  *         "put"={
  *              "security"="is_granted('ROLE_ADMIN')",
  *          },
+ *         "delete"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *          },
+ *         "patch"={
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *          },
  *     }
  * )
  * @ORM\Entity(repositoryClass=SmartphoneRepository::class)
