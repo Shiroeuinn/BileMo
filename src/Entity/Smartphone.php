@@ -15,12 +15,12 @@ use Doctrine\ORM\Mapping as ORM;
  *     paginationItemsPerPage=5,
  *     collectionOperations={
  *         "get",
- *         "post"={"security"="is_granted('ROLE_BILEMO')"}
+ *         "post"={"security"="is_granted('ROLE_ADMIN')"}
  *     },
  *     itemOperations={
  *         "get",
  *         "put"={
- *              "security"="is_granted('ROLE_BILEMO')",
+ *              "security"="is_granted('ROLE_ADMIN')",
  *          },
  *     }
  * )

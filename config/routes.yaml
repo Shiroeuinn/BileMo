@@ -1,2 +1,8 @@
-api_authentication:
+api_authentication_check:
   path: /api/authentication_check
+  controller: App\Controller\AuthController::getTokenUser
+
+register:
+  path: /register
+  controller: App\Controller\AuthController::register
+  methods: POST

@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *         "get",
- *         "put"={"security"="is_granted('ROLE_USER')"},
+ *         "put"={"security"="i_granted('ROLE_USER')"},
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"client": "exact"})
