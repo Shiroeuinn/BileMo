@@ -47,4 +47,12 @@ class ClientRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getRandomClient()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :id')
+            ->setParameter('id', random_int(1, 5))
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

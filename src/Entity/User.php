@@ -3,16 +3,19 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ApiResource(
  *     attributes={
  *     "order"={"id":"DESC"}
  *     },
+ *     formats={"jsonld"},
  *     paginationItemsPerPage=5,
  *     collectionOperations={
  *         "get",
@@ -20,7 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     },
  *     itemOperations={
  *         "get",
- *         "put"={"security"="i_granted('ROLE_USER')"},
+ *         "put"={"security"="is_granted('ROLE_USER')"},
  *         "delete"={
  *              "security"="is_granted('ROLE_USER')",
  *          },
@@ -30,6 +33,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"client": "exact"})
+ *
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User

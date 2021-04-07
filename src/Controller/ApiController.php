@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ApiController extends AbstractController
 {
+
     /**
      * @var integer HTTP status code - 200 (OK) by default
      */
